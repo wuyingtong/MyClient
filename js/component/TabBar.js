@@ -38,8 +38,8 @@ export default class TabBar extends Component {
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'home'}
                     title='首页'
-                    renderIcon={() => <Image style={styles.tabImg} source={require("../image/tab/home_normal.png")}/>}
-                    renderSelectedIcon={() => <Image style={styles.tabImg} source={require("../image/tab/home_selected.png")} />}
+                    renderIcon={() => <Image style={styles.tabImg} source={require('../image/tab/home_normal.png')}/>}
+                    renderSelectedIcon={() => <Image style={styles.tabImg} source={require('../image/tab/home_selected.png')} />}
                     onPress={() => this.setState({ selectedTab: 'home' })}>
                     <HomePage/>
                 </TabNavigator.Item>
@@ -47,8 +47,8 @@ export default class TabBar extends Component {
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'msg'}
                     title='消息'
-                    renderIcon={() => <Image style={styles.tabImg} source={require("../image/tab/msg_normal.png")}/>}
-                    renderSelectedIcon={() => <Image style={styles.tabImg} source={require("../image/tab/msg_selected.png")} />}
+                    renderIcon={() => <Image style={styles.tabImg} source={require('../image/tab/msg_normal.png')}/>}
+                    renderSelectedIcon={() => <Image style={styles.tabImg} source={require('../image/tab/msg_selected.png')} />}
                     onPress={() => this.setState({ selectedTab: 'msg' })}>
                     <MsgPage/>
                 </TabNavigator.Item>
@@ -56,8 +56,8 @@ export default class TabBar extends Component {
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'movie'}
                     title='电影top'
-                    renderIcon={() => <Image style={styles.tabImg} source={require("../image/tab/order_normal.png")}/>}
-                    renderSelectedIcon={() => <Image style={styles.tabImg} source={require("../image/tab/order_selected.png")} />}
+                    renderIcon={() => <Image style={styles.tabImg} source={require('../image/tab/order_normal.png')}/>}
+                    renderSelectedIcon={() => <Image style={styles.tabImg} source={require('../image/tab/order_selected.png')} />}
                     onPress={() => this.setState({ selectedTab: 'movie' })}>
                     <MoviePage/>
                 </TabNavigator.Item>
@@ -65,8 +65,8 @@ export default class TabBar extends Component {
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'mine'}
                     title='我'
-                    renderIcon={() => <Image style={styles.tabImg} source={require("../image/tab/me_normal.png")}/>}
-                    renderSelectedIcon={() => <Image style={styles.tabImg} source={require("../image/tab/me_selected.png")} />}
+                    renderIcon={() => <Image style={styles.tabImg} source={require('../image/tab/me_normal.png')}/>}
+                    renderSelectedIcon={() => <Image style={styles.tabImg} source={require('../image/tab/me_selected.png')} />}
                     onPress={() => this.setState({ selectedTab: 'mine' })}>
                     <MinePage/>
                 </TabNavigator.Item>
