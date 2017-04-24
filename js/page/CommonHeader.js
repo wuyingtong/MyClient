@@ -54,6 +54,10 @@ export default class CommonHeader extends Component {
                         <Image style={styles.iconImg} source={require('../image/home_header/friend.png')}/>
                     </TouchableOpacity>
 
+                    <TouchableOpacity onPress={this._friendClick}>
+                        <Image style={styles.iconImg} source={require('../image/home_header/add.png')}/>
+                    </TouchableOpacity>
+
                 </View>
 
             );

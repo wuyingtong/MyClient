@@ -4,20 +4,88 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Image, Text, TouchableOpacity, ToastAndroid} from 'react-native';
 
-import SelectImg from './App';
+import ImagePicker from 'react-native-image-picker';
 
 export default class MinePageHeader extends Component {
 
-    _selectImg() {
-        ToastAndroid.show("选择照片/打开照相机", ToastAndroid.SHORT);
-        return <SelectImg/>
+    state = {
+        avatarSource: null,
+        videoSource: null
+    };
+
+    selectPhotoTapped() {
+        const options = {
+
+            quality: 1.0,
+            maxWidth: 500,
+            maxHeight: 500,
+            storageOptions: {
+                skipBackup: true
+            }
+        };
+
+        ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled photo picker');
+            }
+            else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            }
+            else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            }
+            else {
+                let source = {uri: response.uri};
+
+                // You can also display the image using data:
+                // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+                this.setState({
+                    avatarSource: source
+                });
+            }
+        });
+    }
+
+    selectVideoTapped() {
+        const options = {
+            title: 'Video Picker',
+            takePhotoButtonTitle: 'Take Video...',
+            mediaType: 'video',
+            videoQuality: 'medium'
+        };
+
+        ImagePicker.showImagePicker(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled video picker');
+            }
+            else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            }
+            else if (response.customButton) {
+                console.log('User tapped custom button: ', response.customButton);
+            }
+            else {
+                this.setState({
+                    videoSource: response.uri
+                });
+            }
+        });
     }
 
     render() {
         return (
-            <TouchableOpacity onPress={this._selectImg.bind(this)}>
+            <TouchableOpacity onPress={this.selectPhotoTapped.bind(this)}>
                 <View style={styles.container}>
-                    <Image style={styles.headerImg} source={require('../image/mine/header.png')}/>
+                    { this.state.avatarSource === null ?
+                        <Image style={styles.headerImg} source={require('../image/mine/header.png')}/> :
+                        <Image style={styles.avatar} source={this.state.avatarSource}/>
+                    }
+
 
                     <View style={{marginLeft: 8, flex: 1}}>
                         <Text style={{color: "black", fontSize: 14}}>Aimin</Text>

@@ -90,14 +90,19 @@ export default class MovieTopPage extends Component {
 
             <View style={styles.itemContainer}>
 
-                <Image style={styles.itemImg} source={{uri:rowData.images.large}}/>
+                <Image style={styles.itemImg} source={{uri: rowData.images.large}}/>
 
-                <View style={{marginLeft:3,flex:1}}>
-                    <Text style={{fontWeight:'bold',color:'#50535b',fontSize:16,marginTop:3}}>{rowData.title}</Text>
-                    <Text style={{color:'#50535b',fontSize:12,marginTop:3}}>类型：{rowData.genres + "、"}</Text>
-                    <Text style={{color:'#50535b',fontSize:12,marginTop:3}}>主演：{rowData.casts.name + "、"}</Text>
-                    <Text style={{color:'#50535b',fontSize:12,marginTop:3}}>豆瓣评分：{rowData.rating.average}</Text>
-                    <Text style={{color:'#21c129',marginTop:3, alignSelf:'flex-end',marginRight:8}}>详细介绍>></Text>
+                <View style={{marginLeft: 3, flex: 1}}>
+                    <Text style={{
+                        fontWeight: 'bold',
+                        color: '#50535b',
+                        fontSize: 16,
+                        marginTop: 3
+                    }}>{rowData.title}</Text>
+                    <Text style={{color: '#50535b', fontSize: 12, marginTop: 3}}>类型：{rowData.genres + "、"}</Text>
+                    <Text style={{color: '#50535b', fontSize: 12, marginTop: 3}}>主演：{rowData.casts.name + "、"}</Text>
+                    <Text style={{color: '#50535b', fontSize: 12, marginTop: 3}}>豆瓣评分：{rowData.rating.average}</Text>
+                    <Text style={{color: '#21c129', marginTop: 3, alignSelf: 'flex-end', marginRight: 8}}>详细介绍>></Text>
                 </View>
 
             </View>
@@ -109,10 +114,17 @@ export default class MovieTopPage extends Component {
     render() {
         if (!this.state.load) {
             return (
-                <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
-                    <ProgressBarAndroid ActivityIndicator={'Inverse'}/>
-                </View>
+                <View>
+                    <TitleView
+                        titleText={'豆瓣电影TOP榜'}
+                        type={'movie'}
+                        searchClick={this._searchClick}
+                        friendClick={this._friendClick}/>
 
+                    <ProgressBarAndroid
+                        style={{justifyContent:'center'}}
+                        ActivityIndicator={'Inverse'}/>
+                </View>
             );
         }
 
@@ -121,17 +133,17 @@ export default class MovieTopPage extends Component {
             <View style={styles.container}>
                 <TitleView
                     titleText={'豆瓣电影TOP榜'}
-                    type = {'movie'}
+                    type={'movie'}
                     searchClick={this._searchClick}
                     friendClick={this._friendClick}
-                    />
+                />
 
                 <ListView
                     refreshControl={
                         <RefreshControl
                             refreshing={this.state.refreshing}
                             onRefresh={this._onRefresh.bind(this)}/>}
-                    style={{flex:1,marginBottom:35}}
+                    style={{flex: 1, marginBottom: 35}}
                     dataSource={this.state.dataSource}
                     renderRow={this._renderRow}>
 
