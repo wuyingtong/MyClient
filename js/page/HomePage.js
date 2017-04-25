@@ -15,7 +15,11 @@ const BANNER_IMGS = [
     require('../image/banner/1.jpg'),
     require('../image/banner/2.jpg'),
     require('../image/banner/3.jpg'),
-    require('../image/banner/4.jpg')
+    require('../image/banner/4.jpg'),
+    require('../image/banner/5.jpg'),
+    require('../image/banner/6.jpg'),
+    require('../image/banner/3.jpg'),
+    require('../image/banner/4.jpg'),
 ];
 export default class HomePage extends Component {
 
