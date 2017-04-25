@@ -17,7 +17,7 @@ export default class MyClient extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         codePush.sync();
     }
 
