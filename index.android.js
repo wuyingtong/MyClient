@@ -7,6 +7,7 @@
 import React, {Component} from 'react';
 import {AppRegistry, Image, View, Text, StyleSheet} from 'react-native';
 import Navigation from './js/config/entry';
+import codePush from 'react-native-code-push';
 
 export default class MyClient extends Component {
     constructor(props) {
@@ -14,6 +15,10 @@ export default class MyClient extends Component {
         this.state = {
             selectedTab: 'home',
         }
+    }
+
+    componentDidMount(){
+        codePush.sync();
     }
 
 
